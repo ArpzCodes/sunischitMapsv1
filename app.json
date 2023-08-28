@@ -1,7 +1,8 @@
+
 {
   "expo": {
     "name": "finalJs",
-    "slug": "finalJs",
+    "slug": "sunischitappv1",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,13 +19,26 @@
       "supportsTablet": true
     },
     "android": {
+     
+      "config":{
+        "googleMaps":{
+          "apiKey":"AIzaSyB7SRUNebUsEJRV5G_7O7hqy7NndKTsT6M"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.dev.sunischit.sunischitappv1"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f16f7d52-145f-4c07-9177-4aca970699d3"
+      }
+    },
+    "owner": "dev.sunischit"
   }
 }
