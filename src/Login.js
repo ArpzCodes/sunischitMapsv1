@@ -94,7 +94,7 @@ import {
         
         <Text style={{  fontSize: 26, marginTop: 10 }}>
         {/* <Text style={{ fontFamily:"JosefinSans_400Regular", fontSize: 26, marginTop: 10 }}> */}
-        Kanjirowa <Text style={{ color: "#FFAD7F" }}>Sunischit</Text> App   
+    Test <Text style={{ color: "#FFAD7F" }}>Sunischit</Text> App   
         {/* Kanjirowa <Text style={{ fontFamily:"JosefinSans_400Regular",color: "#FFAD7F" }}>Sunischit</Text> App    */}
         </Text>
   

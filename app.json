@@ -19,7 +19,7 @@
       "supportsTablet": true
     },
     "android": {
-     
+      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION", "ACCESS_BACKGROUND_LOCATION"],
       "config":{
         "googleMaps":{
           "apiKey":"AIzaSyB7SRUNebUsEJRV5G_7O7hqy7NndKTsT6M"
@@ -29,7 +29,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.dev.sunischit.sunischitappv1"
+      "package": "com.dev.sunischit.kns"
     },
     "web": {
       "favicon": "./assets/favicon.png"

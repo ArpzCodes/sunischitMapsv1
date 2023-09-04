@@ -33,6 +33,7 @@ export default function App() {
 <Stack.Screen
           name="Dashboard"
           component={Dashboard}
+          options={{ headerShown: false }}
           // options={{
           //   headerTitle: () => <Header name="Dashboard" />,
           //   headerStyle: {
@@ -45,6 +46,7 @@ export default function App() {
 <Stack.Screen
           name="DriverDashboard"
           component={DriverDashboard}
+          options={{ headerShown: false }}
           // options={{
           //   headerTitle: () => <Header name="Dashboard" />,
           //   headerStyle: {
