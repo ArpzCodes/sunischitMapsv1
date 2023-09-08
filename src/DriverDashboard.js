@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { firebase} from "../config";
-
+import * as Notifications from 'expo-notifications';
 import { useNavigation } from "@react-navigation/native";
 
 import { Marker } from "react-native-maps";
@@ -95,6 +95,13 @@ function DriverDashboard() {
         alert("Permission to access location was denied");
         setLoading(false);
         return;
+      }
+
+      let resn = await Notifications.requestPermissionsAsync();
+      if (resn.status != 'granted') {
+  console.log('no access');
+      } else {
+        console.log('Notifications granted');
       }
 
       try {
