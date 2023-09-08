@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Text, Alert ,StyleSheet} from 'react-native';
 import { firebase } from "../config";
 // import { useFonts, JosefinSans_400Regular, JosefinSans_700Bold } from '@expo-google-fonts/josefin-sans';
+import { useFonts } from 'expo-font';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ChangePasswordScreen = () => {
@@ -9,10 +10,10 @@ const ChangePasswordScreen = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-//   let [fontsLoaded] = useFonts({
-//     JosefinSans_400Regular,
-//     JosefinSans_700Bold,
-//   });
+  const [fontsLoaded] = useFonts({
+    'JosefinSans_400Regular': require('../assets/fonts/JosefinSans-Regular.ttf'),
+    'JosefinSans_700Bold': require('../assets/fonts/JosefinSans-Bold.ttf')
+  });
   const handlePasswordChange = () => {
     const user = firebase.auth().currentUser;
 
@@ -45,9 +46,9 @@ const ChangePasswordScreen = () => {
         Alert.alert('Error', error.message);
       });
   };
-//   if (!fontsLoaded) {
-//     return null; // Render a loading screen or fallback component
-//   }
+  if (!fontsLoaded) {
+    return null; // Render a loading screen or fallback component
+  }
 
   return (
     <View style={styles.container}>
@@ -75,8 +76,8 @@ const ChangePasswordScreen = () => {
         value={confirmPassword}
         onChangeText={setConfirmPassword}
       />
-      <TouchableOpacity style={styles.button}   onPress={handlePasswordChange}><Text style={{textAlign:"center", textAlignVertical:"center", color:"#FFFFFF",  fontSize:20}}>Change Password</Text></TouchableOpacity> 
-      {/* <TouchableOpacity style={styles.button}   onPress={handlePasswordChange}><Text style={{textAlign:"center", textAlignVertical:"center", color:"#FFFFFF",  fontFamily:"JosefinSans_400Regular", fontSize:20}}>Change Password</Text></TouchableOpacity>  */}
+
+      <TouchableOpacity style={styles.button}   onPress={handlePasswordChange}><Text style={{textAlign:"center", textAlignVertical:"center", color:"#FFFFFF",  fontFamily:"JosefinSans_400Regular", fontSize:20}}>Change Password</Text></TouchableOpacity> 
     </View>
   );
 };
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     width: 280,
     color: "#FFFFFF",
     fontSize: 20,
-    // fontFamily:"JosefinSans_400Regular",
+    fontFamily:"JosefinSans_400Regular",
     borderBottomWidth: 1,
     borderBottomColor: "#000000",
     backgroundColor: "#379CDF",

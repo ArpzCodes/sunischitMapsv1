@@ -5,16 +5,16 @@ import { FlatList } from 'react-native-gesture-handler';
 import { useNavigation } from "@react-navigation/native";
 import { firebaseConfig } from '../config';
 // import { useFonts, JosefinSans_400Regular, JosefinSans_700Bold } from '@expo-google-fonts/josefin-sans';
+import { useFonts } from 'expo-font';
 
 
 const CallUsers = ({route}) => {
    
    
-   
-    // let [fontsLoaded] = useFonts({
-    //     JosefinSans_400Regular,
-    //     JosefinSans_700Bold,
-    //   });
+  const [fontsLoaded] = useFonts({
+    'JosefinSans_400Regular': require('../assets/fonts/JosefinSans-Regular.ttf'),
+    'JosefinSans_700Bold': require('../assets/fonts/JosefinSans-Bold.ttf')
+  });
 
 
       const { route: driverRoute } = route.params;
@@ -51,9 +51,9 @@ const CallUsers = ({route}) => {
             });
         }, []);
 
-// if (!fontsLoaded) {
-//     return null; // Render a loading screen or fallback component
-//   }
+if (!fontsLoaded) {
+    return null; // Render a loading screen or fallback component
+  }
 
 
 
@@ -115,11 +115,11 @@ const styles= StyleSheet.create({
     itemHeading:{
         color:"white",
         fontSize:20,
-        // fontFamily:"JosefinSans_400Regular"
+        fontFamily:"JosefinSans_400Regular"
     },
     itemText:{
         color:"white",
-        // fontFamily:"JosefinSans_400Regular",
+        fontFamily:"JosefinSans_400Regular",
         fontSize:20
     },
     button:{
@@ -131,7 +131,7 @@ const styles= StyleSheet.create({
         alignContent:"center",
         paddingTop:7,
       
-       backgroundColor:"#429368",
+   
         borderRadius:6,
         
     },

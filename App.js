@@ -14,12 +14,13 @@ import Dashboard from "./src/Dashboard";
 import DriverDashboard from "./src/DriverDashboard";
 import CallUsers from "./src/CallUsers";
 import ForgetPass from './src/ForgetPass';
+import Header from './components/Header';
+import CallHeader from "./components/CallHeader";
 import ChangePasswordScreen from './src/ChangePasswordScreen';
 const Stack = createStackNavigator();
 
 
 export default function App() {
-  
   return (
     <NavigationContainer>
       <AttendanceProvider>
@@ -34,64 +35,62 @@ export default function App() {
 <Stack.Screen
           name="Dashboard"
           component={Dashboard}
-          options={{ headerShown: false }}
-          // options={{
-          //   headerTitle: () => <Header name="Dashboard" />,
-          //   headerStyle: {
-          //     height: 100,
-          //                   backgroundColor: "#379CDF",
-          //     shadowColor: "#000",
-          //   },
-          // }}
+          options={{
+            headerTitle: () => <Header name="Dashboard" />,
+            headerStyle: {
+              height: 80,
+                            backgroundColor: "#379CDF",
+              shadowColor: "#000",
+            },
+          }}
         />
 <Stack.Screen
           name="DriverDashboard"
           component={DriverDashboard}
-          options={{ headerShown: false }}
-          // options={{
-          //   headerTitle: () => <Header name="Dashboard" />,
-          //   headerStyle: {
-          //     height: 100,
-          //                   backgroundColor: "#379CDF",
-          //     shadowColor: "#000",
-          //   },
-          // }}
+          options={{
+            headerTitle: () => <Header name="DriverDashboard" />,
+            headerStyle: {
+              height: 80,
+                            backgroundColor: "#379CDF",
+              shadowColor: "#000",
+            },
+          }}
         />
         
         <Stack.Screen name="CallUsers" component={CallUsers}  
-        // options={{
-        //     headerTitle: () => <CallHeader name="CallUsers" />,
-        //     headerStyle: {
-        //       height: 100,
-        //                     backgroundColor: "#379CDF",
-        //       shadowColor: "#000",
-        //     },
-        //   }} 
+        options={{
+            headerTitle: () => <CallHeader name="CallUsers" />,
+            headerStyle: {
+              height: 80,
+                            backgroundColor: "#379CDF",
+              shadowColor: "#000",
+            },
+          }} 
           />
 <Stack.Screen
           name="Attendance"
           component={Attendance}
-          // options={{
-          //   headerTitle: () => <Header name="Dashboard" />,
-          //   headerStyle: {
-          //     height: 100,
-          //                   backgroundColor: "#379CDF",
-          //     shadowColor: "#000",
-          //   },
-          // }}
+          options={{
+            headerTitle: () => <CallHeader name="CallUsers" />,
+            headerStyle: {
+              height: 80,
+                            backgroundColor: "#379CDF",
+              shadowColor: "#000",
+            },
+          }} 
         />
          <Stack.Screen name="Forget Password" component={ForgetPass}></Stack.Screen>
          <Stack.Screen
           name="ChangePasswordScreen"
           component={ChangePasswordScreen}
-          // options={{
-          //   headerTitle: () => <CallHeader name="Dashboard" />,
-          //   headerStyle: {
-          //     height: 100,
-          //                   backgroundColor: "#379CDF",
-          //     shadowColor: "#000",
-          //   },
-          // }} 
+          options={{
+            headerTitle: () => <CallHeader name="Forget Password" />,
+            headerStyle: {
+              height: 80,
+                            backgroundColor: "#379CDF",
+              shadowColor: "#000",
+            },
+          }} 
         />
 </Stack.Navigator>
 </AttendanceProvider>

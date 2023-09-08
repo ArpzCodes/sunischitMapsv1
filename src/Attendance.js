@@ -11,12 +11,13 @@ import { Picker } from "@react-native-picker/picker";
 // import { useFonts, JosefinSans_400Regular, JosefinSans_700Bold } from "@expo-google-fonts/josefin-sans";
 import { useAttendance } from "./AttendanceContext";
 import { firebase } from "../config";
+import { useFonts } from 'expo-font';
 
 const Attendance = ({ route }) => {
-//   let [fontsLoaded] = useFonts({
-//     JosefinSans_400Regular,
-//     JosefinSans_700Bold,
-//   });
+  const [fontsLoaded] = useFonts({
+    'JosefinSans_400Regular': require('../assets/fonts/JosefinSans-Regular.ttf'),
+    'JosefinSans_700Bold': require('../assets/fonts/JosefinSans-Bold.ttf')
+  });
 
   const { route: driverRoute } = route.params;
   const { attendanceData, updateAttendance } = useAttendance();
@@ -173,11 +174,11 @@ const styles = StyleSheet.create({
   itemHeading: {
     color: "white",
     fontSize: 20,
-    // fontFamily: "JosefinSans_400Regular",
+    fontFamily: "JosefinSans_400Regular",
   },
   itemText: {
     color: "white",
-    // fontFamily: "JosefinSans_400Regular",
+    fontFamily: "JosefinSans_400Regular",
     fontSize: 20,
   },
   button: {
@@ -224,7 +225,7 @@ const styles = StyleSheet.create({
   picker: {
     flex: 1, // Allow the picker to take up available space
     color: "white",
-    // fontFamily: "JosefinSans_400Regular",
+    fontFamily: "JosefinSans_400Regular",
     fontSize: 18,
   },
 
@@ -241,7 +242,7 @@ const styles = StyleSheet.create({
   },
   submitButtonText: {
     color: "white",
-    // fontFamily: "JosefinSans_400Regular",
+    fontFamily: "JosefinSans_400Regular",
     fontSize: 18,
   },
 });

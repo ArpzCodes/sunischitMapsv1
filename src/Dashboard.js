@@ -25,15 +25,16 @@ import { db } from "../config";
 //   JosefinSans_400Regular,
 //   JosefinSans_700Bold,
 // } from "@expo-google-fonts/josefin-sans";
+import { useFonts } from 'expo-font';
 
 const Dashboard = () => {
   const [users, setUsers] = useState([]);
   const [name, setName] = useState(" ");
 
-//   let [fontsLoaded] = useFonts({
-//     JosefinSans_400Regular,
-//     JosefinSans_700Bold,
-//   });
+  const [fontsLoaded] = useFonts({
+    'JosefinSans_400Regular': require('../assets/fonts/JosefinSans-Regular.ttf'),
+    'JosefinSans_700Bold': require('../assets/fonts/JosefinSans-Bold.ttf')
+  });
 
   const [newData, setDataa] = useState([]);
 
@@ -124,6 +125,7 @@ const Dashboard = () => {
               if (route === snapshot.data().route) {
                 setCallnumber(number);
                 setDriverName(firstName + " " + lastName);
+                setBusNo(busNo)
               }
               updatedUsers.push({
                 id: doc.id,
@@ -147,9 +149,9 @@ const Dashboard = () => {
     return Math.max(size, minMarkerSize);
   };
 
-//   if (!fontsLoaded) {
-//     return null; // Render a loading screen or fallback component
-//   }
+  if (!fontsLoaded) {
+    return null; // Render a loading screen or fallback component
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -172,8 +174,10 @@ const Dashboard = () => {
         </Marker.Animated>
         {/* ... */}
       </MapView>
+
       {containerVisible && !isMapHeld && (
         <Animated.View style={{ display: "flex", flexDirection: "column" }}>
+          <View style={styles.driverDetails}> 
           <View style={styles.driverInfo}>
             <Image
               source={require("../assets/driver.png")}
@@ -182,7 +186,7 @@ const Dashboard = () => {
             <Text
               style={{
                 color: "#000000",
-                // fontFamily: "JosefinSans_400Regular",
+                fontFamily: "JosefinSans_400Regular",
                 marginLeft: 11,
               }}
             >
@@ -199,10 +203,11 @@ const Dashboard = () => {
               <Text
                 style={{
                   color: "#000000",
-                //   fontFamily: "JosefinSans_400Regular",
+                  fontFamily: "JosefinSans_400Regular",
                   marginLeft: 11,
                 }}
               >
+                
                 {" "}
                 {busNo}
               </Text>
@@ -216,6 +221,7 @@ const Dashboard = () => {
                 style={{ height: 25, width: 25 }}
               ></Image>
             </TouchableOpacity>
+            </View>
           </View>
         </Animated.View>
       )}
@@ -226,8 +232,8 @@ const Dashboard = () => {
           onPress={handleBringBackButtonPress}
         >
           <Text
-            style={{ color: "#ffffff" }}
-            // style={{ fontFamily: "JosefinSans_400Regular", color: "#ffffff" }}
+            
+            style={{ fontFamily: "JosefinSans_400Regular", color: "#ffffff" }}
           >
             Back
           </Text>
@@ -248,11 +254,16 @@ const styles = StyleSheet.create({
     height: Dimensions.get("window").height,
   },
 
+  driverDetails:{
+    position:"absolute",
+    bottom:Dimensions.get("window").height-600,
+    left:Dimensions.get("window").width-350,
+ 
+
+  },
   driverInfo: {
-    position: "absolute",
-    bottom: Dimensions.get("window").height - 560,
-    left: 0,
-    right: 0,
+  
+  
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -262,8 +273,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
 
     justifyContent: "center",
-    marginLeft: 40,
-    marginBottom: 20,
+  
     width: Dimensions.get("window").width - 80,
     borderRadius: 7,
 
@@ -275,20 +285,17 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
   },
   busInfoContainer: {
-    position: "absolute",
-    bottom: Dimensions.get("window").height - 620,
-    left: 0,
-    right: 0,
-    backgroundColor: "#EA5C0E",
+  
+    backgroundColor: "#FFFFFF",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     height: 50,
     paddingHorizontal: 20,
     justifyContent: "center",
-    marginLeft: 39,
-    marginBottom: 20,
-    width: Dimensions.get("window").width - 136,
+    
+    marginTop:15,
+    width: Dimensions.get("window").width - 140,
     borderRadius: 7,
 
     elevation: 5, // For Android shadow
@@ -299,26 +306,16 @@ const styles = StyleSheet.create({
   },
 
   call: {
-    position: "absolute",
-    bottom: Dimensions.get("window").height - 620,
-    right: 0,
-    marginRight: Dimensions.get("window").width - 323,
-
-    height: 50,
-    paddingHorizontal: 20,
-    borderRadius: 7,
-
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-
-    alignSelf: "flex-end",
-    alignItems: "center",
-
-    marginBottom: 20,
+    marginTop:16,
+    display:"flex",
+    flexDirection:"column",
+    alignContent:"center",
+    alignItems:"center",
+    justifyContent:"center",
+    height:50,
     width: 50,
-    borderRadius: 6,
-
+    borderRadius: 7,
+    marginLeft:10,
     backgroundColor: "#276FF0",
     elevation: 5, // For Android shadow
     shadowColor: "#000000",
@@ -328,18 +325,14 @@ const styles = StyleSheet.create({
   },
 
   bottomContainer: {
-    position: "absolute",
-    // bottom: 0,
-    bottom: Dimensions.get("window").height - 630,
-    left: 0,
-    right: 0,
+  
     backgroundColor: "#4384F4",
     height: 65,
     paddingHorizontal: 20,
     borderTopLeftRadius: 3,
     borderTopRightRadius: 3,
     justifyContent: "center",
-    // fontFamily: "JosefinSans_400Regular",
+    fontFamily: "JosefinSans_400Regular",
   },
 
   driverName: {
@@ -360,7 +353,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "rgb(67,132,244)",
     borderRadius: 4,
-    // fontFamily: "JosefinSans_400Regular",
+    fontFamily: "JosefinSans_400Regular",
   },
 
   driverNumber: {

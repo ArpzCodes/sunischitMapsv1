@@ -29,6 +29,8 @@ import "../config";
 
 function DriverDashboard() {
   const [tracking, setTracking] = useState(false);
+    
+ 
 
   const [name, setName] = useState("");
   const navigation = useNavigation();
@@ -173,9 +175,9 @@ function DriverDashboard() {
       timeInterval: 5000, // 5 seconds (adjust as needed)
       distanceInterval: 0, // meters (adjust as needed)
       foregroundService: {
-        notificationTitle: "Location Tracking",
-        notificationBody: "Tracking your location...",
-        notificationColor: "#3498db", // Notification color
+        notificationTitle: "Sunischit Background Location Service",
+        notificationBody: "Your Location Send is On...",
+        notificationColor: "#0B73A0", // Notification color
       },
     });
     setTracking(true);
@@ -280,30 +282,7 @@ function DriverDashboard() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.headerContainer}>
-        <TouchableOpacity
-          style={styles.leftButton}
-          onPress={handleChangePassword}
-        >
-          <Image
-            style={{ height: 15, width: 28 }}
-            source={require("../assets/key.png")}
-          ></Image>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={signOutUser}>
-          <Image
-            style={{
-              height: 30,
-              width: 30,
-              alignSelf: "flex-end",
-              marginLeft: 15,
-              marginBottom: 10,
-            }}
-            source={require("../assets/logout.png")}
-          ></Image>
-        </TouchableOpacity>
-      </View>
+    
       <MapView style={styles.map} region={mapRegion}>
         <Marker coordinate={mapRegion} anchor={{ x: 0.5, y: 0.5 }} zIndex={999}>
           <Image
@@ -316,6 +295,9 @@ function DriverDashboard() {
           />
         </Marker>
       </MapView>
+      <View>
+
+      <View style={styles.driverFeatures}>
 
       {tracking ? (
         <TouchableOpacity
@@ -332,7 +314,7 @@ function DriverDashboard() {
           <Text style={styles.buttonText}>Start Tracking</Text>
         </TouchableOpacity>
       )}
-
+    
       <TouchableOpacity
         style={styles.callParents}
         onPress={() => navigation.navigate("CallUsers", { route: name.route })}
@@ -349,124 +331,117 @@ function DriverDashboard() {
       >
         <Text style={styles.buttonText}>Attendance</Text>
       </TouchableOpacity>
+      </View>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   headerContainer: {
-    marginTop: 40,
-    padding: 5,
+    marginTop:40,
+    padding:5,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 10,
-  },
-  leftButton: {
-    height: 33,
-    width: 60,
-    marginRight: 200,
-    backgroundColor: "#FFFFFF",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 10,
+   
+    
 
-    borderRadius: 10,
   },
-  rightButton: {
-    height: 40,
-  },
+ 
   container: {
     backgroundColor: "#379CDF",
     height: Dimensions.get("window").height,
     width: Dimensions.get("window").width,
+   
   },
   start: {
-    position: "absolute",
-    bottom: Dimensions.get("window").height - 620,
-    left: 0,
-    right: 0,
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
+  
+    display:"flex",
+    flexDirection:"row",
+    alignItems:"center",
     height: 50,
     paddingHorizontal: 20,
     borderTopLeftRadius: 3,
     borderTopRightRadius: 3,
     justifyContent: "center",
-    marginLeft: 40,
-    marginBottom: 20,
-    width: Dimensions.get("window").width - 80,
-    borderRadius: 7,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    backgroundColor: "#FFFFFF",
+    // marginLeft:40,
+    // marginBottom:20,
+    width: Dimensions.get("window").width-80,
+    borderRadius:7,
+    borderTopLeftRadius:10,
+    borderTopRightRadius:10,    
+    backgroundColor: '#FFFFFF',
     elevation: 5, // For Android shadow
-    shadowColor: "#000000",
+    shadowColor: '#000000',
     shadowOpacity: 0.3,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
   },
 
   attendance: {
-    position: "absolute",
-    bottom: Dimensions.get("window").height - 740,
-    left: 0,
-    right: 0,
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-
+    // position: "absolute",
+    // bottom: Dimensions.get("window").height-740,
+    // left: 0,
+    // right: 0,
+    marginTop:15,
+    display:"flex",
+    flexDirection:"row",
+    alignItems:"center",
+  
     height: 50,
     paddingHorizontal: 20,
     borderTopLeftRadius: 3,
     borderTopRightRadius: 3,
     justifyContent: "center",
-    marginLeft: 40,
-    marginBottom: 20,
-    width: Dimensions.get("window").width - 80,
-    borderRadius: 7,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    backgroundColor: "#2775A9",
+    // marginLeft:40,
+    // marginBottom:20,
+    width: Dimensions.get("window").width-80,
+    borderRadius:7,
+    borderTopLeftRadius:10,
+    borderTopRightRadius:10,    
+    backgroundColor: '#2775A9',
     elevation: 5, // For Android shadow
-    shadowColor: "#000000",
+    shadowColor: '#000000',
     shadowOpacity: 0.3,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
   },
-
+  
   callParents: {
-    position: "absolute",
-    bottom: Dimensions.get("window").height - 680,
-    left: 0,
-    right: 0,
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-
+    // position: "absolute",
+    // bottom: Dimensions.get("window").height-680,
+    // left: 0,
+    // right: 0,
+    marginTop:15,
+    display:"flex",
+    flexDirection:"row",
+    alignItems:"center",
+   
+   
     height: 50,
     paddingHorizontal: 20,
     borderTopLeftRadius: 3,
     borderTopRightRadius: 3,
     justifyContent: "center",
-    marginLeft: 40,
-    marginBottom: 20,
-    width: Dimensions.get("window").width - 80,
-    borderRadius: 7,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    backgroundColor: "#2775A9",
+    // marginLeft:40,
+    // marginBottom:20,
+    width: Dimensions.get("window").width-80,
+    borderRadius:7,
+    borderTopLeftRadius:10,
+    borderTopRightRadius:10,    
+    backgroundColor: '#2775A9',
     elevation: 5, // For Android shadow
-    shadowColor: "#000000",
+    shadowColor: '#000000',
     shadowOpacity: 0.3,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 4,
   },
   scrollView: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   loadingContainer: {
     flex: 1,
@@ -475,23 +450,34 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     marginTop: 10,
-    fontFamily: "JosefinSans_400Regular",
+    fontFamily:"JosefinSans_400Regular"
   },
+  
 
   map: {
     width: "100%",
     height: "100%",
   },
+
+  driverFeatures:{
+    display:"flex",
+    flexDirection:"column",
+    
+    position: "absolute",
+    bottom: Dimensions.get("window").height-650,
+    left: Dimensions.get("window").width-340,
+  },
   buttonText: {
+   
     color: "white",
     justifyContent: "center",
     alignItems: "center",
     fontSize: 20,
     color: "#FFFFFF",
-    fontFamily: "JosefinSans_700Bold",
+    fontFamily:"JosefinSans_700Bold"
   },
   button: {
-    marginTop: 15,
+
     height: 60,
     width: 250,
     backgroundColor: "#558968",
@@ -499,6 +485,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 20,
   },
+ 
 });
 
 export default DriverDashboard;
