@@ -70,18 +70,18 @@ if (!fontsLoaded) {
     style={styles.container}>
 
         <View style={styles.innerContainer}>
-            <Text style={styles.itemHeading}> First Name: {item.firstName}</Text>
-            <Text style={styles.itemHeading}> Last Name: {item.lastName}</Text>
+            <Text style={styles.itemHeading}> Name: {item.firstName} {item.lastName}</Text>
+           
            
     
             <View style={{display:"flex",flexDirection:"column"}}>
             <Text style={styles.itemText}> Contact: {item.number}</Text>
             <TouchableOpacity style={styles.button }  onPress={()=>makePhonecall(item.number)} >
            
-            <Image
-          source={require("../assets/call.png")}
-          style={{ width: 30,  alignSelf:"center",  height: 25, }}
-        />
+          
+        
+          <Text style={{color:"#FFFFFF", fontFamily:"JosefinSans_400Regular"}}>Call</Text>
+      
     </TouchableOpacity>
             
             </View>
@@ -113,20 +113,26 @@ const styles= StyleSheet.create({
         flexDirection:'column'
     },
     itemHeading:{
-        color:"white",
+        color:"#FFFFFF",
         fontSize:20,
         fontFamily:"JosefinSans_400Regular"
     },
     itemText:{
-        color:"white",
+        color:"#FFFFFF",
         fontFamily:"JosefinSans_400Regular",
         fontSize:20
     },
     button:{
         marginTop:10,
-        alignSelf:"center",
-        width:50,
-        height:45,
+        display:"flex",
+        alignItems:"center",
+        textAlign:"center",
+        textAlignVertical:"center",
+               alignSelf:"center",
+        alignContent:"center",
+        width:80,
+        backgroundColor:"#379CDF",
+        height:40,
         alignItems:"center",
         alignContent:"center",
         paddingTop:7,

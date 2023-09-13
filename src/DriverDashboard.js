@@ -33,6 +33,7 @@ function DriverDashboard() {
  
 
   const [name, setName] = useState("");
+  const [driverName, setdriverName] = useState("");
   const navigation = useNavigation();
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -81,11 +82,16 @@ function DriverDashboard() {
       .get()
       .then((snapshot) => {
         if (snapshot.exists) {
+          console.log(snapshot.data())
+          setdriverName(snapshot.data().firstName)
+
           setName(snapshot.data());
         } else {
           console.log("User does not exist");
         }
       });
+      
+      
   }, []);
 
 
@@ -170,14 +176,15 @@ function DriverDashboard() {
   //calling location updates
 
   const startLocationTracking = async () => {
+    alert("नमस्कार "+ driverName + " जि \n आजको यात्रा शुभ रहोस । ")
     await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME, {
       accuracy: Location.Accuracy.BestForNavigation,
       timeInterval: 5000, // 5 seconds (adjust as needed)
       distanceInterval: 0, // meters (adjust as needed)
       foregroundService: {
-        notificationTitle: "Sunischit Background Location Service",
-        notificationBody: "Your Location Send is On...",
-        notificationColor: "#0B73A0", // Notification color
+        notificationTitle: "Realtime Location Sharing Enabled.",
+        notificationBody: "तिव्र गति जिवन क्षति",
+        notificationColor: "#000000",
       },
     });
     setTracking(true);
@@ -186,7 +193,7 @@ function DriverDashboard() {
 
   //Stopping location updates
   const stopLocationTracking = async () => {
-    // Check if the task is registered before attempting to stop it
+    // Check if the task is registered before attempting to stop itz
     const isTaskRegistered = await TaskManager.isTaskRegisteredAsync(
       LOCATION_TASK_NAME
     );
@@ -220,9 +227,9 @@ function DriverDashboard() {
           timeInterval: 5000,
           distanceInterval: 0,
           foregroundService: {
-            notificationTitle: "Location Tracking",
-            notificationBody: "Tracking your location...",
-            notificationColor: "#3498db",
+            notificationTitle: "Sunischit : Location Sharing has been enabled.",
+            notificationBody: "Real Time Location Sharing | तिव्र गति जिवन क्षति",
+            notificationColor: "#000000",
           },
         });
       }
@@ -338,18 +345,7 @@ function DriverDashboard() {
 }
 
 const styles = StyleSheet.create({
-  headerContainer: {
-    marginTop:40,
-    padding:5,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingHorizontal: 10,
-   
-    
 
-  },
- 
   container: {
     backgroundColor: "#379CDF",
     height: Dimensions.get("window").height,
@@ -464,7 +460,7 @@ const styles = StyleSheet.create({
     flexDirection:"column",
     
     position: "absolute",
-    bottom: Dimensions.get("window").height-650,
+    bottom: Dimensions.get("window").height-580,
     left: Dimensions.get("window").width-340,
   },
   buttonText: {

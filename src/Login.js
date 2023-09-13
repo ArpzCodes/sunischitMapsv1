@@ -5,13 +5,15 @@ import {
   TextInput,
   StyleSheet,
   KeyboardAvoidingView,
+  ScrollView,
   Image,
   Dimensions
 } from "react-native";
 import React, { useEffect, useState,useCallback } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { firebase, firebaseConfig } from "../config";
-
+import eyeOpened from "../assets/eye.png"
+import eyeClosed from "../assets/eyeClosed.png"
 import { useFonts } from 'expo-font';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -106,12 +108,8 @@ const Login = () => {
   };
 
   return (
-    <KeyboardAvoidingView behavior="padding" style={styles.container}>
-      {/* <Image
-        source={require("../assets/logo.png")}
-        style={{  width: Dimensions.get("window").width-80, marginTop:15 }}
-        resizeMode="contain"
-      /> */}
+    
+   
 <View style={styles.container}>
        <Text style={{ fontFamily:"JosefinSans_700Bold", fontWeight:"100", fontSize:40, marginTop:60 }}>Sign In</Text>    
       
@@ -123,9 +121,13 @@ const Login = () => {
 
   </View>
       
-
-      <View style={{ marginTop: 15 }}>
-        <View style={{display:"flex", marginTop:15, flexDirection:"row", alignContent:'center', alignItems:"center", }}>
+  <KeyboardAvoidingView
+ 
+      behavior="position" // or "position"
+    >
+      <View style={{ marginTop: 15, width: "100%" , }}>
+        <View style={{display:"flex",  marginTop:15, flexDirection:"row", alignContent:'center', alignItems:"center", }}>
+        <ScrollView horizontal contentContainerStyle={{ maxWidth: 300 }}>
         <TextInput
           style={styles.textInput}
           placeholder="Email"
@@ -134,6 +136,7 @@ const Login = () => {
           autoCapitalize="none"
           autoCorrect={false}
         />
+        </ScrollView>
         <View style={styles.mail}>
         <Image
         source={require("../assets/mail.png")}
@@ -141,9 +144,11 @@ const Login = () => {
       />
         </View>
 
+        
         </View>
+      
        
-        <View style={{display:"flex", flexDirection:"row", marginTop:8, alignContent:'center', alignItems:"center", }}>
+        <View style={{display:"flex", flexDirection:"row", width:"100%",marginTop:8, alignContent:'center', alignItems:"center", }}>
 
 
         <TextInput
@@ -163,7 +168,7 @@ const Login = () => {
          
         <Image
         style={{height:21,width:34}}
-        source={require("../assets/eye.png")}
+        source= {showPassword ? eyeClosed : eyeOpened}
           name={showPassword ? 'visibility-off' : 'visibility'}
           size={24}
           color="#ffffff"
@@ -172,6 +177,7 @@ const Login = () => {
       </View>
       </View>
       </View>
+      </KeyboardAvoidingView>
 
       <TouchableOpacity
         onPress={() => LoginUser(email, password)}
@@ -200,7 +206,7 @@ const Login = () => {
       <View style={styles.bottomContainer}>
       <Image
         source={require("../assets/filler.png")}
-        style={{ width:100 , height: 80, }}
+        style={{ width:90 , height: 70, }}
       />
       
 
@@ -208,7 +214,7 @@ const Login = () => {
       </View>
         
    
-    </KeyboardAvoidingView>
+   
   );
 };
 
@@ -219,6 +225,8 @@ const styles = StyleSheet.create({
     
     backgroundColor: "#FFFFFF",
     flex: 1,
+    display:"flex",
+    flexDirection:"column",
     alignItems: "center",
     alignContent:"center",
     justifyContent:"center",
@@ -232,6 +240,7 @@ const styles = StyleSheet.create({
     marginTop:10,
       backgroundColor: "#FFFFFF",
       flex: 1,
+      display:"flex",
       alignItems: "center",
       alignContent:"center",
       justifyContent:"center",

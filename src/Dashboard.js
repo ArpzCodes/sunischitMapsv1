@@ -148,6 +148,16 @@ const Dashboard = () => {
     const size = baseSize * (latitudeDelta / maxLatitudeDelta);
     return Math.max(size, minMarkerSize);
   };
+  const handleCenterBusButtonPress = () => {
+
+    setMapRegion({
+      // Update the mapRegion to center on the bus's location
+      latitude: driverLocation.latitude,
+      longitude: driverLocation.longitude,
+      latitudeDelta: 0.07,
+      longitudeDelta: 0.07,
+    });
+  };
 
   if (!fontsLoaded) {
     return null; // Render a loading screen or fallback component
@@ -174,6 +184,14 @@ const Dashboard = () => {
         </Marker.Animated>
         {/* ... */}
       </MapView>
+
+      <TouchableOpacity onPress={handleCenterBusButtonPress} style={styles.centerBus}>
+        <Image source={require("../assets/centerBus.png")}
+        style={{ height: 40, width: 40 }}
+        >
+
+        </Image>
+      </TouchableOpacity>
 
       {containerVisible && !isMapHeld && (
         <Animated.View style={{ display: "flex", flexDirection: "column" }}>
@@ -231,6 +249,7 @@ const Dashboard = () => {
           style={styles.bringBackButton}
           onPress={handleBringBackButtonPress}
         >
+     
           <Text
             
             style={{ fontFamily: "JosefinSans_400Regular", color: "#ffffff" }}
@@ -256,8 +275,16 @@ const styles = StyleSheet.create({
 
   driverDetails:{
     position:"absolute",
-    bottom:Dimensions.get("window").height-600,
+    bottom:Dimensions.get("window").height-590,
     left:Dimensions.get("window").width-350,
+ 
+
+  },
+ 
+  centerBus:{
+    position:"absolute",
+    bottom:Dimensions.get("window").height-150,
+    left:Dimensions.get("window").width-80,
  
 
   },

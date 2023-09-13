@@ -79,7 +79,16 @@ export default function App() {
             },
           }} 
         />
-         <Stack.Screen name="Forget Password" component={ForgetPass}></Stack.Screen>
+         <Stack.Screen name="Forget Password" component={ForgetPass}
+          options={{
+            headerTitle: () => <CallHeader name="CallUsers" />,
+            headerStyle: {
+              height: 80,
+                            backgroundColor: "#379CDF",
+              shadowColor: "#000",
+            },
+          }} 
+         ></Stack.Screen>
          <Stack.Screen
           name="ChangePasswordScreen"
           component={ChangePasswordScreen}

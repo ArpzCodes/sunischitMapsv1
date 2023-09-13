@@ -2,14 +2,14 @@ import { StyleSheet, Text, Image,View, TextInput,Button} from 'react-native'
 import React ,{useState} from 'react'
 import { firebase, firebaseConfig } from "../config";
 import { TouchableOpacity } from 'react-native-gesture-handler';
-// import { useFonts, JosefinSans_400Regular, JosefinSans_700Bold } from '@expo-google-fonts/josefin-sans';
+import { useFonts } from 'expo-font';
 
 const ForgetPass = () => {
     const [email, setEmail] = useState("");
-    // let [fontsLoaded] = useFonts({
-    //   JosefinSans_400Regular,
-    //   JosefinSans_700Bold,
-    // });
+    const [fontsLoaded] = useFonts({
+      'JosefinSans_400Regular': require('../assets/fonts/JosefinSans-Regular.ttf'),
+      'JosefinSans_700Bold': require('../assets/fonts/JosefinSans-Bold.ttf')
+    });
 
     const forgetPassword = () => {
 
@@ -22,6 +22,8 @@ const ForgetPass = () => {
           .catch((error) => {
             alert(error);
           });
+
+          alert("Email Sent")
       };
     //   if (!fontsLoaded) {
     //     return null; // Render a loading screen or fallback component
@@ -48,8 +50,8 @@ const ForgetPass = () => {
 <TouchableOpacity style={styles.button} onPress={() => {
           forgetPassword();
         }} >
-          <Text style={{color:"#FFFFFF"}}>Send Password Reset Mail </Text>
-          {/* <Text style={{color:"#FFFFFF", fontFamily:"JosefinSans_400Regular"}}>Send Password Reset Mail </Text> */}
+       
+          <Text style={{color:"#FFFFFF", fontFamily:"JosefinSans_400Regular"}}>Send Password Reset Mail </Text>
   
 </TouchableOpacity>
      
@@ -73,7 +75,7 @@ const styles = StyleSheet.create({
       paddingTop: 20,
       paddingBottom: 20,
       width: 230,
-    //   fontFamily:"JosefinSans_400Regular",
+      fontFamily:"JosefinSans_400Regular",
       color: "#FFFFFF",
       fontSize: 20,
       borderBottomWidth: 1,
@@ -81,6 +83,7 @@ const styles = StyleSheet.create({
       backgroundColor: "#379CDF",
       marginBottom: 10,
       textAlign: "center",
+      textAlignVertical:"center",
       borderRadius: 8,
     },
     mail:{
@@ -101,6 +104,6 @@ const styles = StyleSheet.create({
       backgroundColor: "#558968",
       alignItems: "center",
       justifyContent: "center",
-      borderRadius: 20,
+      borderRadius: 10,
     },
   });
